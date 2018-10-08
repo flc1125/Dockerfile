@@ -20,7 +20,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install -j$(nproc) gd
 
 RUN pecl install swoole \
-    && docker-php-ext-enable redis swoole
+    && docker-php-ext-enable swoole
 
 # php composer
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
