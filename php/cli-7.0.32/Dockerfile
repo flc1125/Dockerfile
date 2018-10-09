@@ -1,5 +1,7 @@
 FROM php:7.0.32
 
+MAINTAINER Flc <i@flc.io>
+
 # php extension
 RUN apt-get update && apt-get install -y \
         libfreetype6-dev \
