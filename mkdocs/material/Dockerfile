@@ -7,3 +7,5 @@ RUN pip install \
         mkdocs-material \
         pygments \
         pymdown-extensions
+
+ENTRYPOINT ["mkdocs"]
