@@ -1,2 +1,0 @@
-2019/03/26 06:26:57 [error] 6#6: *1 directory index of "/home/html/" is forbidden, client: 192.168.56.102, server: localhost, request: "GET / HTTP/1.1", host: "192.168.56.103:8004"
-2019/03/26 06:26:57 [error] 6#6: *1 open() "/home/html/favicon.ico" failed (2: No such file or directory), client: 192.168.56.102, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "192.168.56.103:8004", referrer: "http://192.168.56.103:8004/"

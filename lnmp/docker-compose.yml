@@ -11,6 +11,19 @@ services:
       - ./nginx/conf.d:/etc/nginx/conf.d/:rw
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/log:/var/log/nginx/:rw
+    restart: always
+
+  mysql:
+    image: mysql:${MYSQL_VERSION}
+    ports:
+      - ${MYSQL_PORT}:3306
+    volumes:
+      - ./mysql/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
+      - ./mysql/data:/var/lib/mysql:rw
+      
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
 
   # redis:
   #   image: redis:${REDIS_VERSION}
