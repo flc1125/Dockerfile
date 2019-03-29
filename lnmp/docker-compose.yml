@@ -12,6 +12,14 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/log:/var/log/nginx/:rw
     restart: always
+  
+  php:
+    image: php:7.2-fpm
+    volumes:
+      - ./home:/home/:rw
+      - ./php/php.ini:/usr/local/etc/php/php.ini:ro
+      - ./php/php-fpm.conf:/usr/local/etc/php-fpm.conf:ro
+    restart: always
 
   mysql:
     image: mysql:${MYSQL_VERSION}
@@ -24,10 +32,22 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
+  
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - "${PHPMYADMIN_HOST_PORT}:80"
+    networks:
+      - default
+    environment:
+      - PMA_HOST=mysql
+      - PMA_PORT=3306
 
-  # redis:
-  #   image: redis:${REDIS_VERSION}
-  #   ports:
-  #     - 6379:6379
-  #   volumes:
-  #     - ./redis/conf/redis.conf:/usr/local/etc/redis/redis.conf:ro
+  redis:
+    image: redis:${REDIS_VERSION}
+    ports:
+      - 6379:6379
+    volumes:
+      - ./redis/conf/redis.conf:/etc/redis.conf:ro
+    restart: always
+    entrypoint: ["redis-server", "/etc/redis.conf"]
