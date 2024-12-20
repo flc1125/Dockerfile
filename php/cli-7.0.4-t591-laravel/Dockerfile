@@ -1,4 +1,4 @@
-FROM php:7.0.4
+FROM php:8.4.2
 
 # php extension
 RUN apt-get update && apt-get install -y \
