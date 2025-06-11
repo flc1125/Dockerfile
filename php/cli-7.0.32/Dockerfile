@@ -1,4 +1,4 @@
-FROM php:7.0.32
+FROM php:7.4.33
 
 MAINTAINER Flc <i@flc.io>
 
